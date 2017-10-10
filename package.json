@@ -1,0 +1,27 @@
+{
+  "name": "unixtimestamp",
+  "version": "1.0.0",
+  "description": "Timestamp Microservice; part of freeCodeCamp API backend projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kemcrimmins/unixTimeStamp.git"
+  },
+  "keywords": [
+    "unix",
+    "timestamp",
+    "api"
+  ],
+  "author": "Kem Crimmins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kemcrimmins/unixTimeStamp/issues"
+  },
+  "homepage": "https://github.com/kemcrimmins/unixTimeStamp#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}

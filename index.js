@@ -7,7 +7,6 @@ app.use('/:timestamp', (req, res) => {
 	var naturalTime; 
 	var unixTime;
 
-	console.log(typeof timestamp);
 	if (timestamp.indexOf(' ') === -1) {
 		unixTime = Number.parseInt(timestamp, 10);
 		naturalTime = getNaturalTime(unixTime * 1000);
@@ -16,7 +15,11 @@ app.use('/:timestamp', (req, res) => {
 		unixTime = getUnixTime(timestamp);
 	}
 
-	res.send(naturalTime + ', ' + unixTime); 
+	if (isNaN(unixTime)) {
+		naturalTime = null;
+		unixTime = null;
+	}
+	res.send('natural: ' + naturalTime + '\n' + 'unix: '+unixTime); 
 });
 
 app.use('/', (req, res) => {

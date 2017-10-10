@@ -19,7 +19,7 @@ app.use('/:timestamp', (req, res) => {
 		naturalTime = null;
 		unixTime = null;
 	}
-	res.send('natural: ' + naturalTime + '\n' + 'unix: '+unixTime); 
+	res.send('<p>natural time: ' + naturalTime + '<p>unix time: '+unixTime); 
 });
 
 app.use('/', (req, res) => {

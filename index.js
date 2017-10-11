@@ -11,7 +11,7 @@ app.use('/:timestamp', (req, res) => {
 		unixTime = Number.parseInt(timestamp, 10); // timestamp is a String and needs conversion
 		naturalTime = getNaturalTime(unixTime * 1000); // pass the unix time in _milliseconds_
 	} else {
-		naturalTime = timestamp;
+		naturalTime = getNaturalTime(timestamp);
 		unixTime = getUnixTime(timestamp);
 	}
 

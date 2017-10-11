@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 
-
 app.use('/:timestamp', (req, res) => {
 	var timestamp = req.params.timestamp;
 	var naturalTime; 

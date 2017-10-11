@@ -24,7 +24,7 @@ app.use('/:timestamp', (req, res) => {
 });
 
 app.use('/', (req, res) => {
-	res.send('Hello world');
+	res.sendFile(__dirname+'/index.html');
 });
 
 app.listen(3000, ()=> {

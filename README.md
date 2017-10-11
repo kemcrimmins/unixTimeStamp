@@ -7,4 +7,4 @@ User Story: If it does, it returns both the Unix timestamp and the natural langu
 
 User Story: If it does not contain a date or Unix timestamp, it returns null for those properties.
 
-Working Version: https://https://subsequent-amusement.glitch.me/
+Working Version: https://subsequent-amusement.glitch.me/

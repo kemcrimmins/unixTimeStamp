@@ -8,8 +8,8 @@ app.use('/:timestamp', (req, res) => {
 	var unixTime;
 
 	if (timestamp.indexOf(' ') === -1) {
-		unixTime = Number.parseInt(timestamp, 10);
-		naturalTime = getNaturalTime(unixTime * 1000);
+		unixTime = Number.parseInt(timestamp, 10); // timestamp is a String and needs conversion
+		naturalTime = getNaturalTime(unixTime * 1000); // pass the unix time in _milliseconds_
 	} else {
 		naturalTime = timestamp;
 		unixTime = getUnixTime(timestamp);
@@ -19,7 +19,8 @@ app.use('/:timestamp', (req, res) => {
 		naturalTime = null;
 		unixTime = null;
 	}
-	res.send('<p>natural time: ' + naturalTime + '<p>unix time: '+unixTime); 
+
+	res.send({unix: unixTime, natural: naturalTime});
 });
 
 app.use('/', (req, res) => {
@@ -32,16 +33,17 @@ app.listen(3000, ()=> {
 
 function getNaturalTime(unixTime) {
 	var date = new Date(unixTime);
-	var options = {year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC'};
+	var options = {year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC'}; // formatting for .toLocaleString()
 
 	return date.toLocaleString('en-US', options);
 }
 
 function getUnixTime(naturalTime) {
 	var date = new Date(naturalTime);
+	// extract the date's elements in preparation for Date.UTC();
 	var year = date.getFullYear();
 	var month = date.getMonth();
 	var day = date.getDate();
 
-	return Date.UTC(year, month, day)/1000;
+	return Date.UTC(year, month, day)/1000; // Date.UTC() gives answer in milliseconds, hence the division to get seconds.
 }

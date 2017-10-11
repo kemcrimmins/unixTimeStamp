@@ -7,7 +7,7 @@ app.use('/:timestamp', (req, res) => {
 	var naturalTime; 
 	var unixTime;
 
-	if (timestamp.indexOf(' ') === -1) {
+	if (/^[0-9]+$/.test(timestamp)) { // check whether input is integers without spaces/letters
 		unixTime = Number.parseInt(timestamp, 10); // timestamp is a String and needs conversion
 		naturalTime = getNaturalTime(unixTime * 1000); // pass the unix time in _milliseconds_
 	} else {
@@ -15,7 +15,7 @@ app.use('/:timestamp', (req, res) => {
 		unixTime = getUnixTime(timestamp);
 	}
 
-	if (isNaN(unixTime)) {
+	if (isNaN(unixTime)) { // invalid user input; set values to null
 		naturalTime = null;
 		unixTime = null;
 	}
